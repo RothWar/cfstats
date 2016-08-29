@@ -43,19 +43,19 @@ class Athlete:
             raise ValueError("unknown workout")
 
 
-def read_csv(file):
+def read_csv(csv_file):
     """
     Read scores from CSV file and create list of Athlete objects
 
     Parameters:
-    file : path to CSV file
+    csv_file : path to CSV file
 
     Returns:
     athlete_list : list of Athlete objects with corresponding workout scores
     """
 
     athlete_list = []
-    with open(file, 'r') as mycsvfile:
+    with open(csv_file, 'r') as mycsvfile:
         dictofdata = csv.DictReader(mycsvfile, delimiter=";")
         for athlete_dict in dictofdata:
             a = Athlete(athlete_dict)
@@ -63,5 +63,5 @@ def read_csv(file):
             athlete_list.append(a)
     return athlete_list
 
-file = 'testing_week_1.csv'
-athlete_list = read_csv(file)
+csv_file = 'testing_week_1.csv'
+athlete_list = read_csv(csv_file)
