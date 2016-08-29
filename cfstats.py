@@ -35,7 +35,7 @@ class Athlete:
         None
         """
         if workout is None:
-            for w, s in self.scores.items():
+            for w, s in sorted(self.scores.items()):
                 print(w + ": " + s)
         elif workout in self.scores.keys():
             print(workout + ": " + self.scores[workout])
