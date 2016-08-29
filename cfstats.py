@@ -6,6 +6,7 @@ Analyze Crossfit testing week results
 """
 
 import csv
+from datetime import datetime
 
 
 class Athlete:
@@ -23,6 +24,12 @@ class Athlete:
         None
         """
         self.scores = d
+        # convert strings containing times to datetime
+        for workout in ["helen", "open_16.5", "row_500m", "row_5000m",
+                        "airbike_100cal"]:
+            if self.scores[workout] is not "":
+                self.scores[workout] = datetime.strptime(self.scores[workout],
+                                                         "%M:%S").time()
 
     def print_stats(self, workout=None):
         """
@@ -36,9 +43,9 @@ class Athlete:
         """
         if workout is None:
             for w, s in sorted(self.scores.items()):
-                print(w + ": " + s)
+                print(w + ": " + str(s))
         elif workout in self.scores.keys():
-            print(workout + ": " + self.scores[workout])
+            print(workout + ": " + str(self.scores[workout]))
         else:
             raise ValueError("unknown workout")
 
