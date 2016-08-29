@@ -12,8 +12,17 @@ class Athlete:
     """
     Basic class representing results for an athlete and testing week
     """
-    def __init__(self, dict):
-        self.scores = dict
+    def __init__(self, d):
+        """
+        Initialize athlete with scores dictionary
+
+        Parameters:
+        d : dictionary containing workout scores as generated in read_csv
+
+        Returns:
+        None
+        """
+        self.scores = d
 
     def print_stats(self, workout=None):
         """
