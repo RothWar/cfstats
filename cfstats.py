@@ -7,6 +7,8 @@ Analyze Crossfit testing week results
 
 import csv
 from datetime import datetime
+import matplotlib.mlab as mlab
+import matplotlib.pyplot as plt
 
 
 class Athlete:
@@ -70,5 +72,21 @@ def read_csv(csv_file):
             athlete_list.append(a)
     return athlete_list
 
+
+def get_scores(athlete_list, workout):
+    """
+
+    """
+    score = []
+    for ath in athlete_list:
+        score.append(ath.scores[workout])
+
+    return score
+
 csv_file = 'testing_week_1.csv'
 athlete_list = read_csv(csv_file)
+scores_dict = {}
+for w in ["row_500m", "row_5000m", "airbike_100cal", "snatch_1rm", "strictpress_1rm", "squat_1rm", "deadlift_1rm", "helen", "helen_w", "open_16.5", "open_16.5_w"]:
+    scores_dict[w] = get_scores(athlete_list, w)
+print(scores_dict)
+
